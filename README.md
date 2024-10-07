@@ -10,4 +10,4 @@ An Aptos example project for a simple wallet application using the Aptos Unity S
 
 ## Screenshots
 
-![Screenshot](https://i.imgur.com/JgfOeib.png)
+![Screenshot](https://i.imgur.com/zckg32c.png)
