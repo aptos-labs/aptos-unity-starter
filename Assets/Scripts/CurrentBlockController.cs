@@ -11,7 +11,7 @@ public class CurrentBlockController : MonoBehaviour
 
     async void GetCurrentBlock()
     {
-        var client = new AptosClient(Networks.Devnet);
+        AptosUnityClient client = new AptosUnityClient(Networks.Devnet);
         var ledgerInfo = await client.GetLedgerInfo();
         TMP_Text textComponent = transform.GetChild(0).GetComponent<TMP_Text>();
         textComponent.text = $"{ledgerInfo.BlockHeight}";

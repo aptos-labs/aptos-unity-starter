@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TransferManager : MonoBehaviour
 {
-    AptosClient client = new AptosClient(Networks.Devnet);
+    AptosUnityClient client = new AptosUnityClient(Networks.Devnet);
 
     [SerializeField]
     public WalletManager walletManager;
@@ -28,6 +28,7 @@ public class TransferManager : MonoBehaviour
     {
         transferRecipient = recipient;
     }
+
     public void UpdateTransferAmount(string amount)
     {
         transferAmount = amount;
@@ -36,7 +37,9 @@ public class TransferManager : MonoBehaviour
     public async void SignAndSubmitTransferTransaction()
     {
         AccountAddress recipient = AccountAddress.From(transferRecipient);
-        ulong parsedAmount = Convert.ToUInt64(decimal.Parse(transferAmount) * (decimal)Math.Pow(10, 8));
+        ulong parsedAmount = Convert.ToUInt64(
+            decimal.Parse(transferAmount) * (decimal)Math.Pow(10, 8)
+        );
 
         var transaction = await client.Transaction.Build(
             sender: walletManager.account.Address,
@@ -47,7 +50,10 @@ public class TransferManager : MonoBehaviour
             )
         );
 
-        var pendingTransaction = await client.Transaction.SignAndSubmitTransaction(walletManager.account, transaction);
+        var pendingTransaction = await client.Transaction.SignAndSubmitTransaction(
+            walletManager.account,
+            transaction
+        );
 
         transactionExplorerButton.SetActive(true);
         transferTransactionHash = pendingTransaction.Hash;
@@ -59,6 +65,8 @@ public class TransferManager : MonoBehaviour
 
     public void OpenInExplorer()
     {
-        Application.OpenURL($"https://explorer.aptoslabs.com/txn/{transferTransactionHash}?network=devnet");
+        Application.OpenURL(
+            $"https://explorer.aptoslabs.com/txn/{transferTransactionHash}?network=devnet"
+        );
     }
 }

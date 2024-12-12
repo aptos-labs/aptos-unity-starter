@@ -1,12 +1,12 @@
 using System;
+using System.Collections;
 using Aptos;
 using TMPro;
 using UnityEngine;
 
 public class WalletManager : MonoBehaviour
 {
-
-    AptosClient client = new AptosClient(Networks.Devnet);
+    AptosUnityClient client = new AptosUnityClient(Networks.Devnet);
 
     public Ed25519Account account;
 
@@ -49,7 +49,8 @@ public class WalletManager : MonoBehaviour
 
     public void OpenInExplorer()
     {
-        Application.OpenURL($"https://explorer.aptoslabs.com/account/{account.Address}?network=devnet");
+        Application.OpenURL(
+            $"https://explorer.aptoslabs.com/account/{account.Address}?network=devnet"
+        );
     }
-
 }

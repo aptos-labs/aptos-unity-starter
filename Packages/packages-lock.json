@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "6a4c55163dff219a834c4f3ea685b71228a059fc"
+      "hash": "cd399842cc533c8c32cd4ee574049e9c2db71116"
     },
     "com.nobi.roundedcorners": {
       "version": "https://github.com/kirevdokimov/Unity-UI-Rounded-Corners.git",
